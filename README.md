@@ -134,7 +134,8 @@ This project can deploy **any Helm chart**.
 
 ### Example: cert-manager
 
-```hclresource "helm_release" "cert_manager" {
+```hcl
+resource "helm_release" "cert_manager" {
   name       = "cert-manager"
   namespace  = "cert-manager"
   repository = "https://charts.jetstack.io"
@@ -152,7 +153,8 @@ This project can deploy **any Helm chart**.
 
 ### Example: Argo CD
 
-```hclresource "helm_release" "sealed_secrets" {
+```hcl
+resource "helm_release" "sealed_secrets" {
   name       = "sealed-secrets"
   namespace  = "kube-system"
   repository = "https://bitnami-labs.github.io/sealed-secrets"
