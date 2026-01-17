@@ -156,15 +156,18 @@ resource "helm_release" "cert_manager" {
 ```hcl
 resource "helm_release" "sealed_secrets" {
   name       = "sealed-secrets"
-  namespace  = "kube-system"
+  namespace  = "sealed-secrets"
   repository = "https://bitnami-labs.github.io/sealed-secrets"
   chart      = "sealed-secrets"
   version    = "2.15.3"
+
+  create_namespace = true
 
   values = [
     file("${path.module}/values/sealed-secrets.yaml")
   ]
 }
+
 
 ```
 
