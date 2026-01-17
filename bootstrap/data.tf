@@ -2,7 +2,7 @@ data "terraform_remote_state" "gke" {
   backend = "gcs"
 
   config = {
-    bucket = "solvox-terraform-state"
+    bucket = "my-terraform-bucket-sv"
     prefix = "gke/autopilot"
   }
 }
