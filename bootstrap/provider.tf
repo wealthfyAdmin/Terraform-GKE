@@ -14,7 +14,7 @@ provider "kubernetes" {
 }
 
 provider "helm" {
-  kubernetes {
+  kubernetes = {
     host = "https://${data.terraform_remote_state.gke.outputs.cluster_endpoint}"
 
     token = data.google_client_config.default.access_token

@@ -1,6 +1,6 @@
 resource "helm_release" "nginx" {
   name      = "nginx"
-  namespace = kubernetes_namespace.nginx.metadata[0].name
+  namespace = kubernetes_namespace_v1.nginx.metadata[0].name
 
   chart   = "oci://registry-1.docker.io/bitnamicharts/nginx"
   version = "22.4.3"
@@ -12,6 +12,6 @@ resource "helm_release" "nginx" {
   recreate_pods = true
 
   depends_on = [
-    kubernetes_namespace.nginx
+    kubernetes_namespace_v1.nginx
   ]
 }
