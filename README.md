@@ -151,7 +151,7 @@ resource "helm_release" "cert_manager" {
 
 ```
 
-### Example: Argo CD
+### Example: Sealed Secrets
 
 ```hcl
 resource "helm_release" "sealed_secrets" {
