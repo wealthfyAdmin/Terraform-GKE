@@ -134,31 +134,36 @@ This project can deploy **any Helm chart**.
 
 ### Example: cert-manager
 
-```hcl
-resource "helm_release" "cert_manager" {
+```hclresource "helm_release" "cert_manager" {
   name       = "cert-manager"
   namespace  = "cert-manager"
-  chart      = "oci://registry-1.docker.io/bitnamicharts/cert-manager"
-  version    = "1.13.3"
+  repository = "https://charts.jetstack.io"
+  chart      = "cert-manager"
+  version    = "1.14.5"
+
   create_namespace = true
 
-  set {
-    name  = "installCRDs"
-    value = "true"
-  }
+  values = [
+    file("${path.module}/values/cert-manager.yaml")
+  ]
 }
+
 ```
 
 ### Example: Argo CD
 
-```hcl
-resource "helm_release" "argocd" {
-  name      = "argocd"
-  namespace = "argocd"
-  chart     = "oci://registry-1.docker.io/bitnamicharts/argo-cd"
-  version   = "6.7.0"
-  create_namespace = true
+```hclresource "helm_release" "sealed_secrets" {
+  name       = "sealed-secrets"
+  namespace  = "kube-system"
+  repository = "https://bitnami-labs.github.io/sealed-secrets"
+  chart      = "sealed-secrets"
+  version    = "2.15.3"
+
+  values = [
+    file("${path.module}/values/sealed-secrets.yaml")
+  ]
 }
+
 ```
 
 ---
